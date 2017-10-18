@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-md-8">
+
+            <h2>Talk Proposals</h2>
+            {{#each proposals}}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{this.title}}</h3>
+                </div>
+                <div class="panel-body">
+                    {{this.summary}}
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default" href="#" role="button">Delete</a>
+                    <a class="btn btn-default" href="#" role="button">Edit</a>
+                </div>
+            </div>
+            {{/each}}
+
+            <p><a type="button" href="talks/add" class="btn btn-primary">Add a New Proposal</a></p>
+
+        </div>
+
+
+        <div class="col col-md-4">
+            <h2>About</h2>
+            <p>The Skill-Sharing website is a project at the end of the <a href="http://eloquentjavascript.net/21_skillsharing.html">Eloquent Javascript</a> book.</p>
+            <p>This page implements all the required features of the website, but uses the <a href="https://expressjs.com/">Express framework</a> and various other Node tools, rather than the custom code provided in the book.</p>
+            <p>Feature description:</p>
+            <ul>
+                <li>Holds a list of Talk proposals along with Comments associated with each proposal.</li>
+                <li>Allows user to add, update and delete proposals and comments.</li>
+                <li>Updates pages in real-time whenever any data is updated (using <a href="https://en.wikipedia.org/wiki/Push_technology#Long_polling">long polling</a>).</li>
+            </ul>
+
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

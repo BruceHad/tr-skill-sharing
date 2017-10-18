@@ -1,0 +1,9 @@
+@import 'bootstrap';
+
+.no-bullet {
+  list-style-type: none;
+  margin: 0; padding: 0;
+}
+.no-bullet li {
+  margin-bottom: 30px;
+}
