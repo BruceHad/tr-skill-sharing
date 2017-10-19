@@ -1,10 +1,13 @@
-<p>{{title}}</p>
-<p>Add a new proposal below.</p>
-<form action="" method="post">
-    <label for="title">Title:</label><br />
-    <input type="text" id="title" name="title" placeholder="Enter Title of proposed talk." />
-    <br />
-    <label for="summary">Summary:</label><br />
-    <textarea id="summary" name="summary"></textarea><br />
-    <input type="submit" value="Add Proposal" />
-</form>
+<div class="container">
+    <p>{{title}}</p>
+    <p>Add a new proposal below.</p>
+    <form action="" method="post" id="add-form">
+        <label for="title">Title:</label><br />
+        <input type="text" id="title" name="title" placeholder="Enter Title of proposed talk." /><br />
+        <label for="slug">Slug:</label><br />
+        <input type="text" id="slug" name="slug" readonly /><br />
+        <label for="summary">Summary:</label><br />
+        <textarea id="summary" name="summary"></textarea><br />
+        <input type="submit" value="Add Proposal" />
+    </form>
+</div>

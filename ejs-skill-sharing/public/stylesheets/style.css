@@ -5814,10 +5814,10 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-.no-bullet {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-.no-bullet li {
-  margin-bottom: 30px; }
+/* ADD proposals
+  ---------------*/
+input[readonly] {
+  color: #999;
+  font-size: small;
+  background-color: #eee;
+  border: 1px solid #aaa; }

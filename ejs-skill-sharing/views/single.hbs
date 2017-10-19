@@ -1,25 +1,21 @@
+
 <div class="container">
     <div class="row">
         <div class="col col-md-8">
 
             <h2>Talk Proposals</h2>
-            {{#each proposals}}
-            <div class="panel panel-info" id="{{slug}}">
+            <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{this.title}} <small><a href="talk/{{this.slug}}">link</a></small></h3>
+                    <h3 class="panel-title">{{proposal.title}}</h3>
                 </div>
                 <div class="panel-body">
-                    {{this.summary}}
+                    {{proposal.summary}}
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-default delete-proposal" href="#" role="button" data-slug="{{this.slug}}">Delete</a>
+                    <a class="btn btn-default delete-proposal" href="#" role="button" data-title="{{proposal.title}}">Delete</a>
                     <a class="btn btn-default" href="#" role="button">Edit</a>
                 </div>
             </div>
-            {{/each}}
-
-            <p><a type="button" href="talks/add" class="btn btn-primary">Add a New Proposal</a></p>
-
         </div>
 
 
@@ -37,4 +33,7 @@
         </div>
 
     </div>
+
+
+
 </div>

@@ -10,6 +10,8 @@ Set up a website for managing meetups. The site allows members to maintain a lis
 Design
 ------
 
+* Need to consider 'progressive enhancement'. i.e. Build a core that works and add functionality with JS where possible.
+
 Server:
 
 * Stores a list of talk proposals: Presenter Name, Title, Summary.
