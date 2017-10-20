@@ -26,7 +26,6 @@ router.get('/add', function(req, res, next) {
 });
 
 /* POST */
-
 router.post('/add', function(req, res, next) {
     model.addProposal(req.body);
     res.redirect('/');

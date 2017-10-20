@@ -89,15 +89,15 @@ if (delButtons != null) {
 }
 
 /* Add: Create Slug from Title */
-const addForm = document.querySelector('#add-form');
-if (addForm != null) {
-    const title = addForm.querySelector('#title');
-    const slug = addForm.querySelector('#slug');
-    title.addEventListener('input', function(event) {
-        console.log(event.target.value);
-        slug.value = event.target.value.replace(/\W+/g, '-').toLowerCase();
-    });
-}
+// const addForm = document.querySelector('#add-form');
+// if (addForm != null) {
+//     const title = addForm.querySelector('#title');
+//     const slug = addForm.querySelector('#slug');
+//     title.addEventListener('input', function(event) {
+//         console.log(event.target.value);
+//         slug.value = event.target.value.replace(/\W+/g, '-').toLowerCase();
+//     });
+// }
 
 
 /***/ })

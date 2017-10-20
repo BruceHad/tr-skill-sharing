@@ -1,4 +1,10 @@
 var fs = require('fs');
+var shortId = require('shortid');
+
+var getSlug = function(title) {
+    let id = shortId.generate();
+    return id + title.replace(/\W+/g, '-').toLowerCase();
+};
 
 module.exports.deleteProposal = function(slug) {
     var deleted = false;
@@ -52,11 +58,14 @@ module.exports.getSingleProposal = function(slug) {
 
 module.exports.addProposal = function(proposal) {
     var proposals = module.exports.getProposals();
+    proposal.slug = getSlug(proposal.title);
     proposals.push(proposal);
+    
     fs.writeFile('./models/proposals.json', JSON.stringify(proposals), 'utf8', function(err) {
         if (err) {
             console.log("An error occured while writing JSON Object to File.");
             return console.log(err);
         }
     });
+    
 };
