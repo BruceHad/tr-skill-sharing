@@ -2,7 +2,8 @@
 const delButtons = document.querySelectorAll('.delete-proposal');
 if (delButtons != null) {
     for (var i = 0; i < delButtons.length; i++) {
-        delButtons[i].addEventListener('mousedown', function(event) {
+        delButtons[i].addEventListener('click', function(event) {
+            event.preventDefault();
             let slug = encodeURIComponent(event.target.dataset.slug);
             let req = new XMLHttpRequest();
             req.open('DELETE', 'talks/' + slug, false);
@@ -13,6 +14,7 @@ if (delButtons != null) {
                 let node = document.getElementById(slug);
                 node.parentNode.removeChild(node);
             }
+            
         });
     }
 }

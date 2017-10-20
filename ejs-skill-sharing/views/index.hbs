@@ -12,7 +12,7 @@
                     {{this.summary}}
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-default delete-proposal" href="#" role="button" data-slug="{{this.slug}}">Delete</a>
+                    <a class="btn btn-default delete-proposal" href="talk/{{this.slug}}/delete" role="button" data-slug="{{this.slug}}">Delete</a>
                     <a class="btn btn-default" href="#" role="button">Edit</a>
                 </div>
             </div>
@@ -33,7 +33,8 @@
                 <li>Allows user to add, update and delete proposals and comments.</li>
                 <li>Updates pages in real-time<sup>*</sup> whenever any data is updated (using <a href="https://en.wikipedia.org/wiki/Push_technology#Long_polling">long polling</a>).</li>
             </ul>
-            <sup>*</sup> open pages side by side to see this in action.
+            <p class="footnote"><sup>*</sup> open pages side by side to see this in action.</p>
+            <p>The design tries to follow <a href="https://en.wikipedia.org/wiki/Progressive_enhancement">Progress Enhancement</a> principles and the basic features all work with Javascript disabled.</p>
         </div>
 
     </div>

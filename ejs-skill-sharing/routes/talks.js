@@ -34,12 +34,27 @@ router.post('/add', function(req, res, next) {
 
 
 /* DELETE */
-router.delete('/:slug', function(req, res, next){
+router.get('/talk/:slug/delete', function(req, res, next){
     console.log(req.params.slug);
     var deleted = model.deleteProposal(req.params.slug);
-    var message = req.params.title + ' NOT deleted';
-    if(deleted) message = req.params.title + ' deleted';
-    res.send(JSON.stringify({"deleted": deleted, "message": message}));
+    if(deleted) {
+        res.redirect('/');
+    }
+    else {
+        res.render('error', {"message": req.params.title + ' NOT deleted'});
+    }
+});
+
+router.delete('/:slug', function(req, res, next){
+    var deleted = model.deleteProposal(req.params.slug);
+    var message = req.params.slug + ' NOT deleted';
+    if(deleted) {
+        message = req.params.slug + ' deleted';
+        res.send(JSON.stringify({"deleted": deleted, "message": message}));
+    }
+    else {
+        res.render('error', {"message": req.params.title + ' NOT deleted'});
+    }
 });
 
 module.exports = router;
