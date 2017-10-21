@@ -60,6 +60,32 @@ module.exports.addProposal = function(proposal) {
     var proposals = module.exports.getProposals();
     proposal.slug = getSlug(proposal.title);
     proposals.push(proposal);
+
+    fs.writeFile('./models/proposals.json', JSON.stringify(proposals), 'utf8', function(err) {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
+    });
+
+};
+
+module.exports.addComment = function(comment) {
+    var proposals = module.exports.getProposals();
+    console.log(comment);
+    var slug = comment.slug;
+    var added = false;
+    for (var i = 0; i < proposals.length; i++) {
+        var p = proposals[i];
+        console.log(p.slug,slug);
+        if (p.slug === slug) {
+            if(typeof p.comments === 'undefined') p.comments = [];
+            p.comments.push({"name": comment['comment-name'], "comment": comment['new-comment']});
+            console.log(p.comment);
+            added=true;
+            break;
+        }
+    }
     
     fs.writeFile('./models/proposals.json', JSON.stringify(proposals), 'utf8', function(err) {
         if (err) {
@@ -68,4 +94,5 @@ module.exports.addProposal = function(proposal) {
         }
     });
     
+    return added;
 };

@@ -29,6 +29,13 @@ router.get('/add', function(req, res, next) {
 router.post('/add', function(req, res, next) {
     model.addProposal(req.body);
     res.redirect('/');
+    
+});
+
+router.post('/talk/:title', function(req, res, next){
+    var result = model.addComment(req.body);
+    console.log(result);
+    res.redirect('back');
 });
 
 

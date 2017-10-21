@@ -2,10 +2,30 @@
 
 /* ADD proposals
   ---------------*/
-input[readonly]
-{
+
+input[readonly] {
     color: #999;
     font-size: small;
     background-color: #eee;
     border: 1px solid #aaa;
+}
+
+/* SINGLE comments
+   ---------------*/
+
+.comment-container {
+    margin: 10px 0;
+
+    p,
+    div {
+        margin: 5px 0;
+        line-height: 1.3;
+    }
+    .comment-name {
+        font-size: small;
+        color: #444;
+    }
+    .comment {
+        margin-left: 20px;
+    }
 }

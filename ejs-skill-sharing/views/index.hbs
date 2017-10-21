@@ -4,7 +4,7 @@
 
             <h2>Talk Proposals</h2>
             {{#each proposals}}
-            <div class="panel panel-info" id="{{slug}}">
+            <div class="panel panel-info" id="{{this.slug}}">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{this.title}} <small><a href="talk/{{this.slug}}">link</a></small></h3>
                 </div>
@@ -12,8 +12,9 @@
                     {{this.summary}}
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-default delete-proposal" href="talk/{{this.slug}}/delete" role="button" data-slug="{{this.slug}}">Delete</a>
                     <a class="btn btn-default" href="#" role="button">Edit</a>
+                    <a class="btn btn-default comment-proposal" href="talk/{{this.slug}}/#comment" role="button">Comment {{#if this.comments}}({{this.comments.length}}){{/if}}</a>
+                    <a class="btn btn-default delete-proposal" href="talk/{{this.slug}}/delete" role="button" data-slug="{{this.slug}}">Delete</a>
                 </div>
             </div>
             {{/each}}

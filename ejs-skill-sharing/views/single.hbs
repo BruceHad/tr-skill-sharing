@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="row">
         <div class="col col-md-8">
@@ -16,7 +15,51 @@
                     <a class="btn btn-default" href="#" role="button">Edit</a>
                 </div>
             </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Comments</h3>
+                </div>
+                <div class="panel-body" id="comments-container">
+                    {{#each proposal.comments}}
+                    <div class="row">
+                        <div class="col col-sm-2">
+                            <p>{{this.name}}</p>
+                        </div>
+                        <div class="col col-sm-10">
+                            <div>{{this.comment}}</div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" action="" method="post" id="add-form" name="comment">
+                        <div class="form-group">
+                            <label for="comment-name" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Enter your name" id="comment-name" name="comment-name" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-comment" class="col-sm-2 control-label">Comment:</label>
+                            <div class="col-sm-10">
+                                <textarea cols="90" rows="10" id="new-comment" name="new-comment" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" id="slug" name="slug" value="{{proposal.slug}}" class="form-control" />
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Add Comment" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
+
 
 
         <div class="col col-md-4">
@@ -33,7 +76,4 @@
         </div>
 
     </div>
-
-
-
 </div>
