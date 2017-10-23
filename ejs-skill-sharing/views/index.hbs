@@ -2,7 +2,11 @@
     <div class="row">
         <div class="col col-md-8">
 
-            <h2>Talk Proposals</h2>
+            <div class="row">
+                <div class="col col-sm-6"><h2>Talk Proposals</h2></div>
+                <div class="col col-sm-6" style="text-align:right"><p class="h2"><a type="button" href="talks/add" class="btn btn-primary">Add a New Proposal</a></p></div>
+            </div>
+            
 
             <div id="proposals">
                 {{#each proposals}}
@@ -21,9 +25,6 @@
                 </div>
                 {{/each}}
             </div>
-
-            <p><a type="button" href="talks/add" class="btn btn-primary">Add a New Proposal</a></p>
-
         </div>
 
 
