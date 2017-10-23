@@ -29,6 +29,16 @@ router.get('/talk/:title', function(req, res, next) {
     res.render('single', data);
 });
 
+router.get('/talk/:slug/comments/:changedSince', function(req, res, next) {
+    var comments = model.getComments(req.params.slug, req.params.changedSince);
+    // console.log(req.params);
+    var json = {
+        "serverTime": Date.now(),
+        "changes": comments
+    };
+    res.send(json);
+});
+
 /* Add page adds a new proposal. */
 router.get('/add', function(req, res, next) {
     res.render('add', { title: 'Skill Sharing Talks' });

@@ -6,6 +6,18 @@ var getSlug = function(title) {
     return id + title.replace(/\W+/g, '-').toLowerCase();
 };
 
+var getProposal = function(slug, proposals){
+    var proposal = null;
+    for (var i = 0; i < proposals.length; i++) {
+        var p = proposals[i];
+        if (p.slug === slug) {
+            proposal = p;
+            break;
+        }
+    }
+    return proposal;
+}
+
 module.exports.deleteProposal = function(slug) {
     var deleted = false;
     var proposals = module.exports.getProposals();
@@ -46,6 +58,26 @@ module.exports.getProposals = function(changedSince) {
     return proposals;
 };
 
+module.exports.getComments = function(slug, changedSince){
+    var proposals = fs.readFileSync('./models/proposals.json', 'utf8');
+    try {
+        proposals = JSON.parse(proposals);
+    }
+    catch (e) {
+        console.log('error reading document');
+    }
+   
+    var proposal = getProposal(slug, proposals);
+    if("comments" in proposal){
+        var  newComments = [];
+        for(var i in proposal.comments){
+            var c = proposal.comments[i];
+            if(c.changed > changedSince) newComments.push(c);
+        }
+        return newComments;
+    }
+};
+
 module.exports.getSingleProposal = function(slug) {
     var proposals = fs.readFileSync('./models/proposals.json', 'utf8');
     try {
@@ -54,13 +86,9 @@ module.exports.getSingleProposal = function(slug) {
     catch (e) {
         console.log('error reading document');
     }
-    for (var i = 0; i < proposals.length; i++) {
-        var p = proposals[i];
-        if (p.slug === slug) {
-            return p;
-        }
-    }
-    return { "title": "Not Found", "summary": "Proposal not found." };
+    var proposal = getProposal(slug, proposals);
+    if(proposal) return proposal;
+    else return { "title": "Not Found", "summary": "Proposal not found." };
 };
 
 module.exports.addProposal = function(proposal) {
@@ -80,16 +108,13 @@ module.exports.addProposal = function(proposal) {
 
 module.exports.addComment = function(comment) {
     var proposals = module.exports.getProposals();
-    console.log(comment);
     var slug = comment.slug;
     var added = false;
     for (var i = 0; i < proposals.length; i++) {
         var p = proposals[i];
-        console.log(p.slug,slug);
         if (p.slug === slug) {
             if(typeof p.comments === 'undefined') p.comments = [];
-            p.comments.push({"name": comment['comment-name'], "comment": comment['new-comment']});
-            console.log(p.comment);
+            p.comments.push({"name": comment['comment-name'], "comment": comment['new-comment'], "changed": Date.now()});
             added=true;
             break;
         }

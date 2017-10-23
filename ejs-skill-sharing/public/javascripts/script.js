@@ -73,18 +73,20 @@ if (delButtons != null) {
     for (var i = 0; i < delButtons.length; i++) {
         delButtons[i].addEventListener('click', function(event) {
             event.preventDefault();
-            let slug = encodeURIComponent(event.target.dataset.slug);
+            let slug = event.target.dataset.slug;
             let req = new XMLHttpRequest();
             req.open('DELETE', 'talks/' + slug, false);
             req.send(null);
             let response = JSON.parse(req.responseText);
-            if (response.deleted) {
-                let node = document.getElementById(slug);
-                node.parentNode.removeChild(node);
-            }
+            if (response.deleted) delNode(`proposal-${slug}`);
 
         });
     }
+}
+
+function delNode(id) {
+    let node = document.getElementById(id);
+    node.parentNode.removeChild(node);
 }
 
 /* Index: Long Polling */
@@ -117,9 +119,28 @@ function requestTalks() {
                 displayNewProposal(response.changes);
             }
 
-            
+
             window.setTimeout(function() {
                 requestTalks();
+            }, 10000);
+        }
+    });
+}
+
+function requestComments() {
+    console.log(window.location.pathname + "comments/" + lastServerTime);
+    request({ pathname: window.location.pathname + "comments/" + lastServerTime }, function(error, response) {
+        if (error) {
+            console.error(error);
+        }
+        else {
+            response = JSON.parse(response);
+            if (response.changes.length > 0) {
+                lastServerTime = response.serverTime;
+                displayNewComments(response.changes);
+            }
+            window.setTimeout(function() {
+                requestComments();
             }, 10000);
         }
     });
@@ -134,7 +155,7 @@ function displayNewProposal(changes) {
 }
 
 function getProposalHtml(proposal) {
-    return `<div class="panel panel-info new" id="proposal-${proposal.slug}">
+    return `<div class="panel panel-info" id="proposal-${proposal.slug}">
                     <div class="panel-heading">
                         <h3 class="panel-title">${proposal.title} <small><a href="talk/${proposal.slug}">link</a></small></h3>
                     </div>
@@ -149,12 +170,37 @@ function getProposalHtml(proposal) {
                 </div>`;
 }
 
+
+function displayNewComments(comments) {
+    console.log(`Display ${comments.length} new comment.`);
+    let commentContainer = singleProposalContainer.querySelector('#comments-container');
+    for (var i = 0; i < comments.length; i++) {
+        let html = getCommentHtml(comments[i]);
+        commentContainer.innerHTML += html;
+    }
+}
+
+function getCommentHtml(comment) {
+    return `<div class="row new">
+                <div class="col col-sm-2">
+                    <p>${comment.name}</p>
+                </div>
+                <div class="col col-sm-10">
+                    <div>${comment.comment}</div>
+                </div>
+            </div>`;
+}
+
+
 const proposalsContainer = document.querySelector('#proposals');
 if (proposalsContainer != null) {
     requestTalks();
 }
 
-
+const singleProposalContainer = document.querySelector('#single-proposal');
+if (singleProposalContainer != null) {
+    requestComments();
+}
 
 
 /***/ })
