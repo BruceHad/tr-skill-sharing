@@ -1,4 +1,143 @@
-@import 'bootstrap';
+/*!
+ * Bootstrap Imports
+ * Only include what is necessary
+ */
+
+// Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+// @import "bootstrap/print";
+// @import "bootstrap/glyphicons";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+
+// Components
+@import "bootstrap/component-animations";
+@import "bootstrap/dropdowns";
+@import "bootstrap/button-groups";
+@import "bootstrap/input-groups";
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+@import "bootstrap/breadcrumbs";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
+@import "bootstrap/labels";
+@import "bootstrap/badges";
+@import "bootstrap/jumbotron";
+@import "bootstrap/thumbnails";
+@import "bootstrap/alerts";
+@import "bootstrap/progress-bars";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/panels";
+@import "bootstrap/responsive-embed";
+@import "bootstrap/wells";
+@import "bootstrap/close";
+
+// Components w/ JavaScript
+// @import "bootstrap/modals";
+// @import "bootstrap/tooltip";
+// @import "bootstrap/popovers";
+// @import "bootstrap/carousel";
+
+// Utility classes
+@import "bootstrap/utilities";
+@import "bootstrap/responsive-utilities";
+
+
+/*!
+ * Treerock Styles
+ */
+
+$dark-background: #851919;
+
+body {
+    overflow: scroll;
+    border-top: 10px solid $dark-background;
+}
+
+header {
+    ul {
+        list-style-position: inside;
+        list-style-type: '> ';
+        padding: 0;
+        margin: 10px 0 0 0;
+    }
+    h1 {
+        margin: 5px 0;
+        padding: 0;
+    }
+}
+
+footer {
+    opacity: 0;
+    color: white;
+    background-color: $dark-background;
+    padding: 5px 0;
+    transition: opacity 0.8s;
+    &:hover {
+        opacity: 1;
+    }
+    p {
+        margin: 2px 0;
+    }
+    a {
+        color: white;
+        border-bottom: 1px dashed white;
+        &:hover {
+            color: white;
+            text-decoration: none;
+            border: 0;
+        }
+    }
+    i {
+        font-size: small;
+    }
+}
+
+.tr-main {
+    ul {
+        margin: 5px 0;
+        padding: 0;
+    }
+    li {
+        margin: 5px 0;
+        padding: 2px;
+    }
+    
+    .loading {
+        min-height: 50px;
+        line-height: 50px;
+    }
+    .loading-inner {
+        margin: 0 auto;
+        width: 90px;
+    }
+}
+
+
+li small {
+    color: #999;
+}
+
+
+/* GENERAL 
+   -------*/
+header {
+    h1 a {
+        color: black;
+    }
+}
 
 /* INDEX proposals
    ---------------*/

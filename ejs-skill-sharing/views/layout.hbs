@@ -13,23 +13,29 @@
 
 <body>
 
-  <div class='container'>
-    <header class='page-header'>
-      <h1><a href="/">{{title}}</a></h1>
-    </header>
-  </div>
+  <header>
+    <div class='container'>
+      <nav>
+        <ul>
+          <li><a href='//treerock.me/'>home</a></li>
+          <li><a href='//github.com/BruceHad/tr-skill-sharing/'>github</a></li>
+        </ul>
+      </nav>
+      <h1><a href="/">{{ title }}</a></h1>
+    </div>
+  </header>
 
 
   {{{body}}}
 
 
-  <footer class='navbar'>
+  <footer class='navbar-fixed-bottom'>
     <div class='container'>
-      <p>This is the footer.</p>
-      <p>Project last update on {{lastUpdated}}.</p>
+      <p>a <a href='//treerock.me/'>treerock</a> build || <i>{{ lastUpdated }}</i></p>
     </div>
   </footer>
 
 </body>
 <script src="/javascripts/script.js"></script>
+
 </html>
