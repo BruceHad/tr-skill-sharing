@@ -29,14 +29,21 @@ module.exports.deleteProposal = function(slug) {
     return deleted;
 };
 
-module.exports.getProposals = function() {
-    var proposals = fs.readFileSync('./models/proposals.json', 'utf8');
+module.exports.getProposals = function(changedSince) {
+    var json = fs.readFileSync('./models/proposals.json', 'utf8');
+    var proposals;
     try {
-        return JSON.parse(proposals);
+        proposals = JSON.parse(json);
     }
     catch (e) {
         console.log('error reading document');
     }
+    if(changedSince > 0) {
+        proposals = proposals.filter(function(elem){
+            return elem.changed > changedSince;
+        });
+    }
+    return proposals;
 };
 
 module.exports.getSingleProposal = function(slug) {
@@ -59,6 +66,7 @@ module.exports.getSingleProposal = function(slug) {
 module.exports.addProposal = function(proposal) {
     var proposals = module.exports.getProposals();
     proposal.slug = getSlug(proposal.title);
+    proposal.changed = Date.now();
     proposals.push(proposal);
 
     fs.writeFile('./models/proposals.json', JSON.stringify(proposals), 'utf8', function(err) {

@@ -1,5 +1,25 @@
 @import 'bootstrap';
 
+/* INDEX proposals
+   ---------------*/
+
+.panel.new {
+    animation-duration: 1.5s;
+    animation-name: expand;
+    overflow: hidden;
+}
+
+@keyframes expand {
+    from {
+        max-height: 0px;
+        opacity: 0;
+    }
+    to {
+        max-height: 200px;
+        opacity: 100;
+    }
+}
+
 /* ADD proposals
   ---------------*/
 
