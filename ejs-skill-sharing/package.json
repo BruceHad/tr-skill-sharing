@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "{ gulp build & node ./bin/www & }",
     "dev": "nodemon ./bin/www ",
-    "dev2": "gulp",
+    "dev2": "gulp build",
     "dev3": "{ nodemon ./bin/www & gulp & }"
   },
   "dependencies": {

@@ -29,8 +29,11 @@ gulp.task('js', function() {
         .pipe(gulp.dest('./public/javascripts/'));
 });
 
-gulp.task('default', ['clean'], function() {
-    run('css', 'js');
+gulp.task('build', ['clean'], function(){
+    run('css', 'js')
+});
+
+gulp.task('default', ['clean', 'build'], function() {
     gulp.watch('./src/stylesheets/*.scss', ['css']);
     gulp.watch('./src/javascripts/*.js', ['js']);
 });
