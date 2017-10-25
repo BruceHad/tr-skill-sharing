@@ -7,6 +7,8 @@ Skill Sharing
 
 The Skill-Sharing website is a project at the end of the [Eloquent Javascript](http://eloquentjavascript.net/21_skillsharing.html) book.
 
+**[Demo](https://radiant-dawn-92007.herokuapp.com/)**
+
 This page implements all the required features of the website, but uses the Express framework and various other Node tools, rather than the custom code provided in the book.
 
 Feature description:
